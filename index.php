@@ -1,7 +1,10 @@
 <?php
-/***** Begin Header *****/
 include './includes/header.php';
-/***** End Header *****/
+require_once './includes/connection.php';
+require_once './includes/utility_funcs.php';
+$conn = dbConnect('read', 'pdo');
+$sql = 'SELECT * FROM tracklist';
+$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
