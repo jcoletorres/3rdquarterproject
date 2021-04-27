@@ -12,7 +12,7 @@ if (!is_readable($userlist)) {
         // if username and password match, create session variable,
         // regenerate the session ID, and break out of the loop
         if ($data[0] == $username && password_verify($password, $data[1])) {
-            $_SESSION['authenticated'] = 'Black Keys';
+            $_SESSION['authenticated'] = 'The Black Keys';
             $_SESSION['start'] = time();
             session_regenerate_id();
             break;

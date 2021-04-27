@@ -2,9 +2,6 @@
 include './includes/header.php';
 require_once './includes/connection.php';
 require_once './includes/utility_funcs.php';
-$conn = dbConnect('read', 'pdo');
-$sql = 'SELECT * FROM tracklist';
-$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,11 +35,11 @@ $result = $conn->query($sql);
             <li data-target="#myCarousel" data-slide-to="4"></li>
         </ol>
         <div class="carousel-inner" role="listbox">
-            <div class="item active"> <img src="images/members/band.png" alt="bandimg1" width="1200" height="600"></div>
-            <div class="item"> <img src="images/members/thom.png" alt="bandimg2" width="1200" height="600"></div>
-            <div class="item"> <img src="images/members/concert.jpg" alt="bandimg3" width="1200" height="600"></div>
-            <div class="item"> <img src="images/members/concert2.jpg" alt="bandimg3" width="1200" height="600"></div>
-            <div class="item"> <img src="images/members/crowd.jpg" alt="bandimg3" width="1200" height="600"></div>
+            <div class="item active"> <img src="images/members/radiohead1.jpg" alt="bandimg1"></div>
+            <div class="item"> <img src="images/members/radiohead2.jpg" alt="bandimg2"></div>
+            <div class="item"> <img src="images/members/radiohead3.jpg" alt="bandimg3"></div>
+            <div class="item"> <img src="images/members/radiohead4.jpg" alt="bandimg4"></div>
+            <div class="item"> <img src="images/members/radiohead5.jpg" alt="bandimg5"></div>
         </div><!--=====End Carousel Images=====-->
         <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
         <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
@@ -130,18 +127,18 @@ $result = $conn->query($sql);
                         <div class="card-img-overlay">
                             <h4 class="card-title signup">Pablo Honey</h4>
                             <ol>
-                                <li class="card-text">You 03:28</li>
-                                <li>Creep 03:58</li>
-                                <li>How Do You? 02:12</li>
-                                <li>Stop Whispering 05:25</li>
-                                <li>Thinking About You 02:41</li>
-                                <li>Anyone Can Play Guitar 03:37</li>
-                                <li>Ripcord 03:09</li>
-                                <li>Vegetable 03:12</li>
-                                <li>Prove Yourself 02:25</li>
-                                <li>I Can't 04:13</li>
-                                <li>Lurgee 03:07</li>
-                                <li>Blow Out 04:42</li>
+                              <?php
+                              $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'Pablo Honey'";
+                              $result = $conn->query($sql);
+                              while($row = mysqli_fetch_assoc($result)) {
+                                //Formatted to look: $row ['track_name']  $row ['track_length']
+                                  echo "<li>";
+                                  echo $row ['track_name'];
+                                  echo " ";
+                                  echo $row ['track_length'];
+                                  echo "</li>";
+                                }
+                              ?>
                             </ol> <a href="https://open.spotify.com/album/6400dnyeDyD2mIFHfkwHXN" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
                     </div><!--=====End Pablo Card=====-->
                 </div><!--=====End Pablo=====-->
@@ -151,17 +148,17 @@ $result = $conn->query($sql);
                         <div class="card-img-overlay">
                             <h4 class="card-title signup">The Bends</h4>
                             <ol>
-                                <li class="card-text">Planet Telex 04:19</li>
-                                <li>The Bends 04:06</li>
-                                <li>High and Dry 04:17</li>
-                                <li>Fake Plastic Trees 04:51</li>
-                                <li>Bones 03:09</li>
-                                <li>Nice Dream 03:53</li>
-                                <li>Just 03:54</li>
-                                <li>My Iron Lung 04:36</li>
-                                <li>I Can't 04:13</li>
-                                <li>Lurgee 03:07</li>
-                                <li>Blow Out 04:42</li>
+                              <?php
+                              $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'The Bends'";
+                              $result = $conn->query($sql);
+                              while($row = mysqli_fetch_assoc($result)) {
+                                  echo "<li>";
+                                  echo $row ['track_name'];
+                                  echo " ";
+                                  echo $row ['track_length'];
+                                  echo "</li>";
+                                }
+                              ?>
                             </ol> <a href="https://open.spotify.com/album/6Lmj92VLXz7Z5xcsjXBMSC" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
                     </div><!--=====End Bends Card=====-->
                 </div><!--=====End Bends=====-->
@@ -171,18 +168,18 @@ $result = $conn->query($sql);
                         <div class="card-img-overlay">
                             <h4 class="card-title signup">OK Computer</h4>
                             <ol>
-                                <li class="card-text">Airbag 04:47</li>
-                                <li>Paranoid Android 06:27</li>
-                                <li>Subterranean Allien 04:27</li>
-                                <li>Exit Music 04:27</li>
-                                <li>Let Down 04:59</li>
-                                <li>Karma Police 04:24</li>
-                                <li>Fitter Happier 01:57</li>
-                                <li>Electioneering 03:50</li>
-                                <li>Climbing Up the Walls 04:45</li>
-                                <li>No Surprised 03:49</li>
-                                <li>Lucky 04:19</li>
-                                <li>The Tourist 05:26</li>
+                              <ol>
+                                <?php
+                                $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'OK Computer'";
+                                $result = $conn->query($sql);
+                                while($row = mysqli_fetch_assoc($result)) {
+                                    echo "<li>";
+                                    echo $row ['track_name'];
+                                    echo " ";
+                                    echo $row ['track_length'];
+                                    echo "</li>";
+                                  }
+                                ?>
                             </ol> <a href="https://open.spotify.com/album/6Lmj92VLXz7Z5xcsjXBMSC" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
                     </div><!--=====End OK Card=====-->
                 </div><!--=====End OK=====-->
@@ -194,16 +191,17 @@ $result = $conn->query($sql);
                         <div class="card-img-overlay">
                             <h4 class="card-title signup">Kid A</h4>
                             <ol>
-                                <li class="card-text">Everything in its Right Place 04:11</li>
-                                <li>Kid A 04:44</li>
-                                <li>The National Anthem 05:51</li>
-                                <li>How to Disappear Completely 05:56</li>
-                                <li>Treefingers 03:42</li>
-                                <li>Optimistic 05:15</li>
-                                <li>In Limbo 03:30</li>
-                                <li>Idioteque 05:09</li>
-                                <li>Morning Bell 04:35</li>
-                                <li>Motion Picture Soundtrack 06:59</li>
+                              <?php
+                              $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'Kid A'";
+                              $result = $conn->query($sql);
+                              while($row = mysqli_fetch_assoc($result)) {
+                                  echo "<li>";
+                                  echo $row ['track_name'];
+                                  echo " ";
+                                  echo $row ['track_length'];
+                                  echo "</li>";
+                                }
+                              ?>
                             </ol> <a href="https://open.spotify.com/album/19RUXBFyM4PpmrLRdtqWbp" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
                     </div><!--=====End Kid Card=====-->
                 </div><!--=====End Kid=====-->
@@ -213,17 +211,17 @@ $result = $conn->query($sql);
                         <div class="card-img-overlay">
                             <h4 class="card-title signup">Amnesiac</h4>
                             <ol>
-                                <li class="card-text">Packt Like Sardines in a Crushed Tin Box 04:00</li>
-                                <li>Pyramid Song 04:49</li>
-                                <li>Pulk/Pull Revolving Doors 04:07</li>
-                                <li>You and Whose Army?</li>
-                                <li>I Might Be Wrong 04:53</li>
-                                <li>Knives Out 04:14</li>
-                                <li>Morning Bell/Amnesiac 03:14</li>
-                                <li>Dollars and Cents 04:51</li>
-                                <li>Hunting Bears 02:01</li>
-                                <li>Like Spinning Plates 03:57</li>
-                                <li>Life in a Glasshouse 04:36</li>
+                              <?php
+                              $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'Amnesiac'";
+                              $result = $conn->query($sql);
+                              while($row = mysqli_fetch_assoc($result)) {
+                                  echo "<li>";
+                                  echo $row ['track_name'];
+                                  echo " ";
+                                  echo $row ['track_length'];
+                                  echo "</li>";
+                                }
+                              ?>
                             </ol> <a href="https://open.spotify.com/album/6Lmj92VLXz7Z5xcsjXBMSC" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
                     </div><!--=====End Amenesiac Card=====-->
                 </div><!--=====End Amnesiac======-->
@@ -233,20 +231,17 @@ $result = $conn->query($sql);
                         <div class="card-img-overlay">
                             <h4 class="card-title signup">Hail to the Thief</h4>
                             <ol>
-                                <li class="card-text">2+2=5 03:19</li>
-                                <li>Sit Down. Stand Up 04:19</li>
-                                <li>Sail to the Moon 04:18</li>
-                                <li>Backdrifts 05:22</li>
-                                <li>Go to Sleep 03:22</li>
-                                <li>Where I End and You Begin 04:29</li>
-                                <li>We Suck Young Blood 04:56</li>
-                                <li>The Gloaming 03:32</li>
-                                <li>There, There 05:23</li>
-                                <li>I Will 01:59</li>
-                                <li>A Punchup at a Wedding 04:57</li>
-                                <li>Myxomatosis 04:57</li>
-                                <li>Scatterbrain 03:21</li>
-                                <li>A Wolf at the Door 03:21</li>
+                              <?php
+                              $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'Hail to the Thief'";
+                              $result = $conn->query($sql);
+                              while($row = mysqli_fetch_assoc($result)) {
+                                  echo "<li>";
+                                  echo $row ['track_name'];
+                                  echo " ";
+                                  echo $row ['track_length'];
+                                  echo "</li>";
+                                }
+                              ?>
                             </ol> <a href="https://open.spotify.com/album/6Lmj92VLXz7Z5xcsjXBMSC" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
                     </div><!--=====End Amnesiac Card=====-->
                 </div><!--====End Amnesiac=====-->
@@ -258,18 +253,17 @@ $result = $conn->query($sql);
                         <div class="card-img-overlay">
                             <h4 class="card-title signup">In Rainbows</h4>
                             <ol>
-                                <li class="card-text">You 03:28</li>
-                                <li>Creep 03:58</li>
-                                <li>How Do You? 02:12</li>
-                                <li>Stop Whispering 05:25</li>
-                                <li>Thinking About You 02:41</li>
-                                <li>Anyone Can Play Guitar 03:37</li>
-                                <li>Ripcord 03:09</li>
-                                <li>Vegetable 03:12</li>
-                                <li>Prove Yourself 02:25</li>
-                                <li>I Can't 04:13</li>
-                                <li>Lurgee 03:07</li>
-                                <li>Blow Out 04:42</li>
+                              <?php
+                              $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'In Rainbows'";
+                              $result = $conn->query($sql);
+                              while($row = mysqli_fetch_assoc($result)) {
+                                  echo "<li>";
+                                  echo $row ['track_name'];
+                                  echo " ";
+                                  echo $row ['track_length'];
+                                  echo "</li>";
+                                }
+                              ?>
                             </ol> <a href="https://open.spotify.com/album/6400dnyeDyD2mIFHfkwHXN" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
                     </div><!--=====End Rainbows Card=====-->
                 </div><!--=====End Rainbows=====-->
@@ -279,15 +273,17 @@ $result = $conn->query($sql);
                         <div class="card-img-overlay">
                             <h4 class="card-title signup">The King of Limbs</h4>
                             <ol>
-                                <li class="card-text">Bloom 05:14</li>
-                                <li>Morning Mr. Magpie 04:40</li>
-                                <li>Little by Little 04:27</li>
-                                <li>Fake Plastic Trees 04:51</li>
-                                <li>Feral 03:12</li>
-                                <li>Lotus Flower 05:00</li>
-                                <li>Codex 04:46</li>
-                                <li>Give Up the Ghost 04:50</li>
-                                <li>Seperator 05:21</li>
+                              <?php
+                              $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'The King of Limbs'";
+                              $result = $conn->query($sql);
+                              while($row = mysqli_fetch_assoc($result)) {
+                                  echo "<li>";
+                                  echo $row ['track_name'];
+                                  echo " ";
+                                  echo $row ['track_length'];
+                                  echo "</li>";
+                                }
+                              ?>
                             </ol> <a href="https://open.spotify.com/album/6Lmj92VLXz7Z5xcsjXBMSC" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
                     </div><!--=====End King Card=====-->
                 </div><!--=====End King=====-->
@@ -297,18 +293,17 @@ $result = $conn->query($sql);
                         <div class="card-img-overlay">
                             <h4 class="card-title signup">A Moon Shaped Pool</h4>
                             <ol>
-                                <li class="card-text">Airbag 04:47</li>
-                                <li>Paranoid Android 06:27</li>
-                                <li>Subterranean Homesick Allien 04:27</li>
-                                <li>Exit Music 04:27</li>
-                                <li>Let Down 04:59</li>
-                                <li>Karma Police 04:24</li>
-                                <li>Fitter Happier 01:57</li>
-                                <li>Electioneering 03:50</li>
-                                <li>Climbing Up the Walls 04:45</li>
-                                <li>No Surprised 03:49</li>
-                                <li>Lucky 04:19</li>
-                                <li>The Tourist 05:26</li>
+                              <?php
+                              $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'A Moon Shaped Pool'";
+                              $result = $conn->query($sql);
+                              while($row = mysqli_fetch_assoc($result)) {
+                                  echo "<li>";
+                                  echo $row ['track_name'];
+                                  echo " ";
+                                  echo $row ['track_length'];
+                                  echo "</li>";
+                                }
+                              ?>
                             </ol> <a href="https://open.spotify.com/album/6Lmj92VLXz7Z5xcsjXBMSC" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
                     </div><!--=====End Moon Card=====-->
                 </div><!--=====End Moon=====-->

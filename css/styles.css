@@ -19,6 +19,14 @@
         font-size: 35px;
         color: #111
     }
+    .warning {
+        font-weight: bold;
+        color: #f00;
+    }
+    .success {
+        font-weight: bold;
+        color: #090;
+    }
     /*=====Mobile Media Query=====*/
     @media (max-width: 800px) {
         body {

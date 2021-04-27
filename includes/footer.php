@@ -7,7 +7,7 @@
       <br> Richelle Thedford</p>
   <p><i class="far fa-copyright"></i>Francis Tuttle
       <?php
-      $thisYear = date('yy');
+      $thisYear = date('2021');
       if ($thisYear) {
         echo $thisYear;
       }

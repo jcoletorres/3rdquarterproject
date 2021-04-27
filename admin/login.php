@@ -5,7 +5,7 @@ if (isset($_POST['login'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $userlist = './password/private/hashed.csv';
-    $redirect = '/3rdquarterproject/admin/upload.php';
+    $redirect = '/3rdquarterproject/admin/album_list.php';
     require_once './password/authenticate/authenticate.php';
 }
  ?>
