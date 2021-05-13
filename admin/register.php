@@ -59,7 +59,7 @@ if (isset($result) || isset($errors)) {
         <input type="submit" name="register" value="Register">
     </p>
     <p>
-      Already registered? <a href="/3rdquarterproject/admin/login.php">Please log in.</a>
+      Already registered? <a href="/3rdquarterproject/admin/index.php">Please log in.</a>
     </p>
 </form>
 </body>
