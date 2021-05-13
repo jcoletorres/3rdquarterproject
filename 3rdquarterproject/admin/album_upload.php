@@ -1,27 +1,6 @@
 <?php
-include dirname(__DIR__).'/includes/connection.php';
-use \includes\Upload;
-
-//Login redirect
-session_start();
-if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated']
-!= 'The Black Keys'){
-    header('Location: http://localhost/3rdquarterproject/admin/login.php');
-}
-
-//Logout redirect
-if (isset($_POST['logout'])) {
-  // Empty the session array
-  $_SESSION = [];
-  // Invalidate the session cookie
-  if (isset($_COOKIE[session_name()])) {
-      setcookie(session_name(), '', time()-86400, '/');
-  }
-  // end session and redirect
-  session_destroy();
-  header('Location: http://localhost/3rdquarterproject/admin/login.php');
-  exit;
-}
+include './includes/login.php';
+login();
 
 if (isset($_POST['insert'])) {
     require_once '../includes/connection.php';
@@ -30,14 +9,21 @@ if (isset($_POST['insert'])) {
     // initialize prepared statement
     $stmt = $conn->stmt_init();
     // create SQL
-    $sql = 'INSERT INTO discography (album_name, track_name, track_length) VALUES(?, ?, ?)';
+    $sql = 'INSERT INTO discography (album_name, year, track_name, track_length, image) VALUES (?, ?, ?, ?, ?)';
     if ($stmt->prepare($sql)) {
         // bind parameters and execute statement
-        $stmt->bind_param('sss',
-        $_POST['title'],
-        $_POST['tracktitle'],
-        $_POST['tracklength']);
+        $stmt->bind_param(
+        'sisss',
+        $_POST['album_name'],
+        $_POST['year'],
+        $_POST['track_name'],
+        $_POST['track_length'],
+        $_POST['image']);
         $stmt->execute();
+        $stmt->bind_result($albumname, $year, $trackname, $tracklength, $image);
+        $stmt->fetch();
+        //Free resources for a second query
+        $stmt->free_result();
         if ($stmt->affected_rows > 0) {
             $OK = true;
         }
@@ -51,20 +37,10 @@ if (isset($_POST['insert'])) {
       }
     }
 
-    $max = 51200;
-  if (isset($_POST['upload'])) {
-      // define the path to the upload folder
-      $destination = '../images/albums';
-      require_once './includes/upload.php';
-      try {
-          $loader = new Upload($destination);
-          $loader->upload('image', $max);
-          $result = $loader->getMessages();
-      } catch (Throwable $t) {
-          echo $t->getMessage();
-      }
-    }
-
+  if (isset($_POST['back'])) {
+    header('Location: http://localhost/3rdquarterproject/admin/album_list.php');
+    exit;
+  }
   ?>
  <!DOCTYPE html>
  <html lang="en" dir="ltr">
@@ -74,44 +50,47 @@ if (isset($_POST['insert'])) {
    </head>
    <body>
      <h1>Upload New Track</h1>
-     <label for="title">Album Title:</label><br>
-     <input type="text" name="title"><br><br>
+    <form method="post">
+      <label for="title">Album Title:</label><br>
+      <input type="text" name="album_name"><br><br>
 
-     <label for="text">Tracklist:</label>
+      <label for="title">Year:</label><br>
+      <input type="text" name="year"><br><br>
+
+      <label for="text">Track Info:</label>
      <table>
        <tr>
          <th>Track Title</th>
          <th>Track Length</th>
+         <th>Uploaded Image</th>
        </tr>
        <tr>
-         <td><input type="text" name="tracktitle"></td>
-         <td><input type="text" name="tracklength" class="number" placeholder="0:00"></td>
+         <td><input type="text" name="track_name"></td>
+         <td><input type="text" name="track_length" class="number" placeholder="0:00"></td>
+         <td>
+           <select class="" name='image' id='image'>
+             <option value="">Select image</option>
+             <?php
+             require_once '../includes/connection.php';
+             // Getting the the listed images
+             $getImages = 'SELECT id, image FROM albumimage ORDER BY id';
+             $images =  $conn->query($getImages);
+             while ($row = $images->fetch_assoc()) { ?>
+               <option value="<?= $row['image'] ?>"
+                  <?php
+                    if ($row['image']) {
+                      echo 'selected';
+                    }
+                  ?>><?= $row['image'] ?></option>
+            <?php } ?>
+           </select>
+         </td>
        </tr>
      </table><br>
-  <form method="post">
-    <input type="submit" name="insert" value="Insert">
-  </form>
-    <h1>Upload Image</h1>
-      <?php
-      if (isset($result)) {
-        echo '<ul>';
-        foreach ($result as $message) {
-          echo "<li>$message</li>";
-        }
-      echo '</ul>';
-      }
-       ?>
-       <form action="album_upload.php" method="post" enctype="multipart/form-data">
-           <p>
-               <input type="hidden" name="MAX_FILE_SIZE" value="<?= $max ?>">
-               <input type="file" name="image" id="image">
-           </p>
-           <p>
-             <input type="submit" name="upload" id="upload" value="Upload">
-           </p>
-       </form><br>
-       <form method="post">
-         <input type="submit" name="logout" value="Log Out">
-       </form>
+      <input type="submit" name="insert" value="Submit Track">
+    </form><br>
+    <form method="post">
+      <input type="submit" name="back" value="Go Back">
+    </form>
    </body>
  </html>

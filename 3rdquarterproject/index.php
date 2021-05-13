@@ -308,6 +308,28 @@ require_once './includes/utility_funcs.php';
                     </div><!--=====End Moon Card=====-->
                 </div><!--=====End Moon=====-->
             </div><!--======End Third Row of Albums======-->
+            <div class="row text-center"><!--=====Start Fourth Row of Albums=====-->
+            <div class="col-sm-4"><!--=====Moon=====-->
+                <p class="year">2021</p>
+                <div class="card img-fluid"> <img class="card-img-top" src="images/albums/test.jpg" alt="test cover">
+                    <div class="card-img-overlay">
+                        <h4 class="card-title signup">The Test</h4>
+                        <ol>
+                          <?php
+                          $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'The Test'";
+                          $result = $conn->query($sql);
+                          while($row = mysqli_fetch_assoc($result)) {
+                              echo "<li>";
+                              echo $row ['track_name'];
+                              echo " ";
+                              echo $row ['track_length'];
+                              echo "</li>";
+                            }
+                          ?>
+                        </ol> <a href="https://open.spotify.com/album/6Lmj92VLXz7Z5xcsjXBMSC" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
+                </div><!--=====End Moon Card=====-->
+            </div><!--=====End Moon=====-->
+          </div><!--=====Start Fourth Row of Albums=====-->
         </div><!--=====End Entire Discography Albums Container=====-->
         <br>
     </div><!--=====End ID Albums=====-->
