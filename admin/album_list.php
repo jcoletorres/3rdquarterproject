@@ -3,7 +3,7 @@ require_once '../includes/connection.php';
 require_once '../includes/utility_funcs.php';
 include './includes/login.php';
 login();
-$sql = 'SELECT DISTINCT album_name FROM discography';
+$sql = 'SELECT DISTINCT * FROM album_list';
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -27,8 +27,8 @@ $result = $conn->query($sql);
       </tr>
       <tr>
         <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-        <td><?= $row['album_name'] ?></td>
-        <td><a href="album_delete.php?id=<?= $row['album_name']?>">DELETE</a></td>
+        <td><?= $row['title'] ?></td>
+        <td><a href="album_delete.php?id=<?= $row['album_id']?>">DELETE</a></td>
       </tr>
       <?php } ?>
     </table><br>

@@ -1,9 +1,5 @@
 <?php
 function login() {
-  //Directory redirect
-  if('Location: http://localhost/3rdquarterproject/admin') {
-    header('Location: http://localhost/3rdquarterproject/admin/login.php');
-  }
   
   //Login redirect
   session_start();

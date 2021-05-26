@@ -56,6 +56,7 @@ if (isset($_POST['back'])) {
      ?>
      <form action="album_cover.php" method="post" enctype="multipart/form-data">
          <p>
+            Please use an image that is 300 x 300. <br><br>
              <label for="image">Upload image:</label><br><br>
              <input type="hidden" name="MAX_FILE_SIZE" value="<?= $max ?>">
              <input type="file" name="image">

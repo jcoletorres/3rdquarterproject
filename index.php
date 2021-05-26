@@ -118,221 +118,41 @@ require_once './includes/utility_funcs.php';
     </div><!--=====End Entire About Members Container=====-->
     <br>
     <div id="albums" class="bg-1"><!--=====Albums Container=====-->
-        <div class="container text-center">
-            <h3 class="text-center">DISCOGRAPHY</h3>
-            <div class="row text-center"><!--=====First Row of Albums=====-->
-                <div class="col-sm-4"><!--=====Pablo=====-->
-                    <p class="year">1993</p>
-                    <div class="card img-fluid"> <img class="card-img-top" src="images/albums/pablo.jpg" alt="pablo cover">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title signup">Pablo Honey</h4>
-                            <ol>
-                              <?php
-                              $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'Pablo Honey'";
-                              $result = $conn->query($sql);
-                              while($row = mysqli_fetch_assoc($result)) {
-                                //Formatted to look: $row ['track_name']  $row ['track_length']
-                                  echo "<li>";
-                                  echo $row ['track_name'];
-                                  echo " ";
-                                  echo $row ['track_length'];
-                                  echo "</li>";
-                                }
-                              ?>
-                            </ol> <a href="https://open.spotify.com/album/6400dnyeDyD2mIFHfkwHXN" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
-                    </div><!--=====End Pablo Card=====-->
-                </div><!--=====End Pablo=====-->
-                <div class="col-sm-4"><!--=====Bends=====-->
-                    <p class="year">1995</p>
-                    <div class="card img-fluid"> <img class="card-img-top" src="images/albums/bends.jpg" alt="bends cover">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title signup">The Bends</h4>
-                            <ol>
-                              <?php
-                              $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'The Bends'";
-                              $result = $conn->query($sql);
-                              while($row = mysqli_fetch_assoc($result)) {
-                                  echo "<li>";
-                                  echo $row ['track_name'];
-                                  echo " ";
-                                  echo $row ['track_length'];
-                                  echo "</li>";
-                                }
-                              ?>
-                            </ol> <a href="https://open.spotify.com/album/6Lmj92VLXz7Z5xcsjXBMSC" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
-                    </div><!--=====End Bends Card=====-->
-                </div><!--=====End Bends=====-->
-                <div class="col-sm-4"><!--=====OK=====-->
-                    <p class="year">1997</p>
-                    <div class="card img-fluid"> <img class="card-img-top" src="images/albums/ok.jpg" alt="okcomputer cover">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title signup">OK Computer</h4>
-                            <ol>
-                              <ol>
-                                <?php
-                                $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'OK Computer'";
-                                $result = $conn->query($sql);
-                                while($row = mysqli_fetch_assoc($result)) {
-                                    echo "<li>";
-                                    echo $row ['track_name'];
-                                    echo " ";
-                                    echo $row ['track_length'];
-                                    echo "</li>";
-                                  }
-                                ?>
-                            </ol> <a href="https://open.spotify.com/album/6Lmj92VLXz7Z5xcsjXBMSC" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
-                    </div><!--=====End OK Card=====-->
-                </div><!--=====End OK=====-->
-            </div><!--=====End First Row of Albums=====-->
-            <div class="row text-center"><!--=====Second Row of Albums=====-->
-                <div class="col-sm-4"><!--=====Kid=====-->
-                    <p class="year">2000</p>
-                    <div class="card img-fluid"> <img class="card-img-top" src="images/albums/kid.jpg" alt="kida cover">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title signup">Kid A</h4>
-                            <ol>
-                              <?php
-                              $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'Kid A'";
-                              $result = $conn->query($sql);
-                              while($row = mysqli_fetch_assoc($result)) {
-                                  echo "<li>";
-                                  echo $row ['track_name'];
-                                  echo " ";
-                                  echo $row ['track_length'];
-                                  echo "</li>";
-                                }
-                              ?>
-                            </ol> <a href="https://open.spotify.com/album/19RUXBFyM4PpmrLRdtqWbp" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
-                    </div><!--=====End Kid Card=====-->
-                </div><!--=====End Kid=====-->
-                <div class="col-sm-4"><!--=====Amnesiac=====-->
-                    <p class="year">2001</p>
-                    <div class="card img-fluid"> <img class="card-img-top" src="images/albums/amnesiac.jpg" alt="amnesiac cover">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title signup">Amnesiac</h4>
-                            <ol>
-                              <?php
-                              $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'Amnesiac'";
-                              $result = $conn->query($sql);
-                              while($row = mysqli_fetch_assoc($result)) {
-                                  echo "<li>";
-                                  echo $row ['track_name'];
-                                  echo " ";
-                                  echo $row ['track_length'];
-                                  echo "</li>";
-                                }
-                              ?>
-                            </ol> <a href="https://open.spotify.com/album/6Lmj92VLXz7Z5xcsjXBMSC" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
-                    </div><!--=====End Amenesiac Card=====-->
-                </div><!--=====End Amnesiac======-->
-                <div class="col-sm-4"><!--=====Hail=====-->
-                    <p class="year">2003</p>
-                    <div class="card img-fluid"> <img class="card-img-top" src="images/albums/hail.jpg" alt="hail cover">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title signup">Hail to the Thief</h4>
-                            <ol>
-                              <?php
-                              $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'Hail to the Thief'";
-                              $result = $conn->query($sql);
-                              while($row = mysqli_fetch_assoc($result)) {
-                                  echo "<li>";
-                                  echo $row ['track_name'];
-                                  echo " ";
-                                  echo $row ['track_length'];
-                                  echo "</li>";
-                                }
-                              ?>
-                            </ol> <a href="https://open.spotify.com/album/6Lmj92VLXz7Z5xcsjXBMSC" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
-                    </div><!--=====End Amnesiac Card=====-->
-                </div><!--====End Amnesiac=====-->
-            </div><!--=====End Second Row of Albums======-->
-            <div class="row text-center"><!--=====Start Third Row of Albums=====-->
-                <div class="col-sm-4"><!--=====Rainbows=====-->
-                    <p class="year">2007</p>
-                    <div class="card img-fluid"> <img class="card-img-top" src="images/albums/rainbows.jpg" alt="rainbows cover">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title signup">In Rainbows</h4>
-                            <ol>
-                              <?php
-                              $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'In Rainbows'";
-                              $result = $conn->query($sql);
-                              while($row = mysqli_fetch_assoc($result)) {
-                                  echo "<li>";
-                                  echo $row ['track_name'];
-                                  echo " ";
-                                  echo $row ['track_length'];
-                                  echo "</li>";
-                                }
-                              ?>
-                            </ol> <a href="https://open.spotify.com/album/6400dnyeDyD2mIFHfkwHXN" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
-                    </div><!--=====End Rainbows Card=====-->
-                </div><!--=====End Rainbows=====-->
-                <div class="col-sm-4"><!--=====King=====-->
-                    <p class="year">2011</p>
-                    <div class="card img-fluid"> <img class="card-img-top" src="images/albums/king.jpg" alt="king cover">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title signup">The King of Limbs</h4>
-                            <ol>
-                              <?php
-                              $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'The King of Limbs'";
-                              $result = $conn->query($sql);
-                              while($row = mysqli_fetch_assoc($result)) {
-                                  echo "<li>";
-                                  echo $row ['track_name'];
-                                  echo " ";
-                                  echo $row ['track_length'];
-                                  echo "</li>";
-                                }
-                              ?>
-                            </ol> <a href="https://open.spotify.com/album/6Lmj92VLXz7Z5xcsjXBMSC" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
-                    </div><!--=====End King Card=====-->
-                </div><!--=====End King=====-->
-                <div class="col-sm-4"><!--=====Moon=====-->
-                    <p class="year">2016</p>
-                    <div class="card img-fluid"> <img class="card-img-top" src="images/albums/moon.jpg" alt="king cover">
-                        <div class="card-img-overlay">
-                            <h4 class="card-title signup">A Moon Shaped Pool</h4>
-                            <ol>
-                              <?php
-                              $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'A Moon Shaped Pool'";
-                              $result = $conn->query($sql);
-                              while($row = mysqli_fetch_assoc($result)) {
-                                  echo "<li>";
-                                  echo $row ['track_name'];
-                                  echo " ";
-                                  echo $row ['track_length'];
-                                  echo "</li>";
-                                }
-                              ?>
-                            </ol> <a href="https://open.spotify.com/album/6Lmj92VLXz7Z5xcsjXBMSC" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
-                    </div><!--=====End Moon Card=====-->
-                </div><!--=====End Moon=====-->
-            </div><!--======End Third Row of Albums======-->
-            <div class="row text-center"><!--=====Start Fourth Row of Albums=====-->
-            <div class="col-sm-4"><!--=====Moon=====-->
-                <p class="year">2021</p>
-                <div class="card img-fluid"> <img class="card-img-top" src="images/albums/test.jpg" alt="test cover">
-                    <div class="card-img-overlay">
-                        <h4 class="card-title signup">The Test</h4>
-                        <ol>
-                          <?php
-                          $sql = "SELECT track_name, track_length FROM `discography` WHERE album_name = 'The Test'";
-                          $result = $conn->query($sql);
-                          while($row = mysqli_fetch_assoc($result)) {
-                              echo "<li>";
-                              echo $row ['track_name'];
-                              echo " ";
-                              echo $row ['track_length'];
-                              echo "</li>";
-                            }
-                          ?>
-                        </ol> <a href="https://open.spotify.com/album/6Lmj92VLXz7Z5xcsjXBMSC" class="btn btn-warning"><i class="fab fa-spotify fa-2x"></i></a></div><!--=====End Tracks=====-->
-                </div><!--=====End Moon Card=====-->
-            </div><!--=====End Moon=====-->
-          </div><!--=====Start Fourth Row of Albums=====-->
-        </div><!--=====End Entire Discography Albums Container=====-->
-        <br>
-    </div><!--=====End ID Albums=====-->
+       <div class="container text-center">
+           <h3 class="text-center">DISCOGRAPHY</h3>
+               <div class="row text-center"><!--=====First Row of Albums=====-->
+                   <?php
+                    $i = 1;
+                     for ($i = 1; $i > 0; $i++) {
+                       $sql = "SELECT * FROM `album_list` LEFT JOIN track_list ON album_list.album_id = track_list.album_id WHERE album_list.album_id = '$i'";
+                       $result = $conn->query($sql);
+                       if ($row = mysqli_fetch_assoc($result)) { ?>
+                           <div class="col-sm-4"><!--=====Album=====-->
+                                   <p class="year"><?php echo $row['year']; ?></p>
+                                   <div class="card img-fluid"> <img class="card-img-top" src="images/albums/<?php echo $row ['image']; ?>" alt="album cover">
+                                       <div class="card-img-overlay">
+                                           <h4 class="card-title signup"><?php echo $row['title']; ?></h4>
+                                           <ol>
+                                           <?php
+                                           while ($row = mysqli_fetch_assoc($result)) {
+                                             //Formatted to look: $row ['track_name']  $row ['track_length']
+                                             echo "<li>";
+                                             echo $row ['track_name'];
+                                             echo " ";
+                                             echo $row ['track_length'];
+                                             echo "</li>";
+                                           }?>
+                           </ol>
+                       </div><!--=====End Tracks=====-->
+                    </div><!--=====End Album Card=====-->
+                  </div><!--=====End Album=====-->
+                 <?php } else { 
+                            break; 
+                                } ?>
+             <?php } ?>
+            </div><!--=====End "row text-center"=====-->
+         </div><!--=====End "Container text-center"=====-->
+       </div><!--=====End Entire Discography Albums Container=====-->
     <div class="container">
         <img src="images/logo/bear.jpg" class="img-responsive center-block" alt=bear>
         <br>

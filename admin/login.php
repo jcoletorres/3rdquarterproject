@@ -47,9 +47,6 @@ if (isset($_POST['login'])) {
         <p>
           <input name="login" type="submit" id="login" value="Log in">
         </p>
-        <p>
-          Need an account? <a href="/3rdquarterproject/admin/register.php">Register here.</a>
-        </p>
       </form>
   </body>
 </html>
